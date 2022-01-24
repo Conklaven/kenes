@@ -45,3 +45,7 @@ code {
   width: 40%;
   height: 90%
 }
+
+#restaurant_name{
+  color: green;
+}

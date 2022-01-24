@@ -1,68 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Restaurant Details</title>
     <link rel="stylesheet" href="reststyle.css">
 
 </head>
+
 <body>
     <div class="nav">
         <p id="title"></p>
         <a href="/">
-        <button>Return</button></a>
+            <button>Return</button></a>
     </div>
     <div id="content">
-    <h1 id="restaurantName"></h1>
-    <a id="emailLink" href=""><h2 id="email"></h2></a>
-    <h2 id="phone"></h2>
-    <h2 id="cuisine"></h2>
-    <p id="about"></p>
-    <h2 id="website"></h2>
-    <h2 id="kosher"></h2>
-    <p id="otherData"></p>
-</div>
+        <h1 id="restaurantName"></h1>
+        <a id="emailLink" href="">
+            <h2 id="email"></h2>
+        </a>
+        <a id="telLink" href=""></a>
+        <h2 id="phone"></h2>
+        <h2 id="cuisine"></h2>
+        <p id="about"></p>
+        <h2 id="website"></h2>
+        <h2 id="kosher"></h2>
+        <p id="otherData"></p>
+    </div>
     <script type="text/javascript">
-        let xhr = new XMLHttpRequest();
-        function requestData() {
-            const url = window.location.href;
-            const restaurantID = url.substring(url.lastIndexOf('?') + 1, url.length);
-console.log(restaurantID);
-            xhr.open('GET', '/restaurant' + restaurantID, true);
-            xhr.responseType = 'json';
-            xhr.send();
-        }
-
-        xhr.onload = function () {
-            if (xhr.status != 200) {
-                console.log('error')
-            } else {
-                console.log('success', xhr.response)
-                const response = xhr.response[0];
-                document.getElementById('restaurantName').innerHTML = response.restaurant_name
-                document.getElementById('email').innerHTML = response.email
-                document.getElementById('emailLink').href = `mailto:${response.email}`
-                document.getElementById('phone').innerHTML = response.phone
-                document.getElementById('cuisine').innerHTML = response.cuisine
-                document.getElementById('about').innerHTML = response.about
-                document.getElementById('website').innerHTML = response.website
-                document.getElementById('kosher').innerHTML = response.kosher
+        const url = window.location.href;
+        console.log(url);
+        const restaurantID = url.substring(url.lastIndexOf('?') + 1, url.length);
+        fetch(`https://kenes-tours.herokuapp.com/rest/${restaurantID}`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('restaurantName').innerHTML = data[0].restaurant_name
+                document.getElementById('restaurantName').innerHTML = data[0].restaurant_name
+                document.getElementById('email').innerHTML = data[0].email
+                document.getElementById('emailLink').href = `mailto:${data[0].email}`
+                document.getElementById('telLink').href = `${data[0].phone}`
+                document.getElementById('phone').innerHTML = data[0].phone
+                document.getElementById('cuisine').innerHTML = data[0].cuisine
+                document.getElementById('about').innerHTML = data[0].about
+                document.getElementById('website').innerHTML = data[0].website
+                document.getElementById('kosher').innerHTML = data[0].kosher
+            });
 
 
-            }
-        };
 
-        xhr.onprogress = function (event) {
-            console.log('progress', xhr)
-        }
+        //         let xhr = new XMLHttpRequest();
+        //         console.log(xhr.responseText);
+        //         console.log(xhr)
+        //         function requestData() {
+        //             const url = window.location.href;
+        //             console.log(url);
+        //             const restaurantID = url.substring(url.lastIndexOf('?') + 1, url.length);
+        // console.log(restaurantID);
+        //             xhr.open('GET', '/restaurant' + restaurantID, true);
+        //             xhr.responseType = 'json';
+        //             xhr.send();
+        //         }
 
-        xhr.onerror = function (event) {
-            console.log('error', xhr)
-        }
-        requestData()
-        // .then(data => console.log(data))
+        //         xhr.onload = function () {
+        //             if (xhr.status != 200) {
+        //                 console.log('error')
+        //             } else {
+        //                 console.log('success', xhr.response)
+        //                 const response = xhr.response[0];
+        //                 document.getElementById('restaurantName').innerHTML = response.restaurant_name
+        //                 document.getElementById('email').innerHTML = response.email
+        //                 document.getElementById('emailLink').href = `mailto:${response.email}`
+        //                 document.getElementById('phone').innerHTML = response.phone
+        //                 document.getElementById('cuisine').innerHTML = response.cuisine
+        //                 document.getElementById('about').innerHTML = response.about
+        //                 document.getElementById('website').innerHTML = response.website
+        //                 document.getElementById('kosher').innerHTML = response.kosher
+
+
+        //             }
+        //         };
+
+        //         xhr.onprogress = function (event) {
+        //             console.log('progress', xhr)
+        //         }
+
+        //         xhr.onerror = function (event) {
+        //             console.log('error', xhr)
+        //         }
+        //         requestData()
+        //         // .then(data => console.log(data))
     </script>
 </body>
+
 </html>

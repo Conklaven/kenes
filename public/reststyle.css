@@ -1,0 +1,11 @@
+#content{
+ width: 50%;
+ margin: auto;
+ background-color: rgba(179, 0, 0, 0.808);
+ text-align: center;
+ color: white;
+}
+
+#restaurantName{
+    font-size: 50px;
+}

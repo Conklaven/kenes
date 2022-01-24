@@ -30,7 +30,7 @@
             const url = window.location.href;
             const restaurantID = url.substring(url.lastIndexOf('?') + 1, url.length);
 console.log(restaurantID);
-            xhr.open('GET', 'http://kenes-tours.herokuapp.com/restaurant' + restaurantID, true);
+            xhr.open('GET', '/restaurant' + restaurantID, true);
             xhr.responseType = 'json';
             xhr.send();
         }

@@ -26,7 +26,7 @@ console.log(e.target.value)
     }
 
     newPage =(e) => {
-        console.log(e.target.id)
+        console.log(e)
         window.open(`./restaurant.html?${e.target.id}`);
     }
     render(){

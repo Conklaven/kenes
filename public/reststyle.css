@@ -1,11 +1,38 @@
 #content{
- width: 50%;
+ width: fit-content;
  margin: auto;
  background-color: rgba(179, 0, 0, 0.808);
  text-align: center;
  color: white;
+ margin-top: 90px;
 }
 
 #restaurantName{
     font-size: 50px;
+}
+
+.nav {
+    height: 50px;
+    width: 100vw;
+    background-color: #ffffff;
+    position: fixed;
+    top: 0;
+    /* width: 100%; */
+    z-index: 100;
+    left: 0;
+    padding-top:5px;
+    font-size: 40px;
+    background-color: black;
+    color: white;
+    text-align: center;
+  }
+  #back {
+    float: left;
+    position: absolute;
+    top: 13px;
+    left: 10px;
+    font-size: 20px;
+}
+#title {
+    display: inline;
 }

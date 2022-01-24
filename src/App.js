@@ -4,7 +4,7 @@ import './App.css';
 // import Card from './components/Card';
 import CardList from './components/CardList';
 import 'tachyons'
-
+import ReactDOM from "react-dom";
 
 
 class App extends React.Component {

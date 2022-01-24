@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Card from './Card';
 import SearchBox from './SearchBox';
 
+
 class CardList extends Component {
     constructor() {
         super();
@@ -17,16 +18,21 @@ class CardList extends Component {
       this.setState({arr:data})
     })
     }
-
+  
     searchItem =(e) => {
-        console.log(e)
+        // console.log(e)
 this.setState({txt:e.target.value})
 console.log(e.target.value)
+    }
+
+    newPage =(e) => {
+        console.log(e.target.id)
+        window.open(`./restaurant.html?${e.target.id}`);
     }
     render(){
         const {arr,txt} = this.state;
         const filterArr = arr.filter(item => {
-            console.log(item)
+            // console.log(item)
             return item.restaurant_name.toLowerCase().includes(txt.toLowerCase());
         })
         return(
@@ -35,7 +41,7 @@ console.log(e.target.value)
         <SearchBox  searchItem={this.searchItem}/>
                 {
                     filterArr.map((item, i) =>{
-                      return <Card user={item}/>
+                      return <Card user={item} newPage={this.newPage}/>
                     })
                   }
 

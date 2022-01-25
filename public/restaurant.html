@@ -23,8 +23,8 @@
         <a id="emailLink" href="">
             <h2 id="email"></h2>
         </a>
-        <a id="telLink" href=""></a>
-        <h2 id="phone"></h2>
+        <a id="telLink" href="">
+        <h2 id="phone"></h2></a>
         <h2 id="cuisine"></h2>
         <p id="about"></p>
         <h2 id="website"></h2>
@@ -38,6 +38,7 @@
         fetch(`https://kenes-tours.herokuapp.com/rest/${restaurantID}`)
             .then(response => response.json())
             .then(data => {
+                console.log(data)
                 document.getElementById('restaurantName').innerHTML = data[0].restaurant_name
                 document.getElementById('restaurantName').innerHTML = data[0].restaurant_name
                 document.getElementById('email').innerHTML = data[0].email
